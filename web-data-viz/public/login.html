@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/cadastro-login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="header_left">
+                <a href="index.html"><img src="./assets/Texto do seu parágrafo.gif" alt="logo do projeto"></a>
+            </div>
+            <nav class="navbar">
+                <div class="header_center">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="header_right">
+                    <ul>
+                        <img src="./assets/headerLinha.png" alt="">
+                        <li><a href="#">Entrar</a></li>
+                    </ul>
+            </nav>
+        </div>
+        </div>
+    </header>
+    <section>
+        <div class="content">
+
+            <div class="card">
+
+                <div class="content_card">
+                    <h1>Faça o login</h1>
+                    <p>Insira as username e senha para prosseguir</p>
+                    <input type="text" id="input_email" placeholder="username">    
+                    <br>
+                    <input type="password" id="input_senha" placeholder="Senha">
+                    <br>
+                    <button onclick="logar()">Login</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+
+
+
+
+<script>
+
+    var erro = 4;
+    var tentativas = 'true'
+
+    function logar() {
+        var email = ''
+        var senha = ''
+        var emailVar = input_email.value;
+        var senhavar = input_senha.value;
+
+        // const Toast = Swal.mixin({
+        //     toast: true,
+        //     position: "top-end",
+        //     showConfirmButton: false,
+        //     timer: 3000,
+        //     timerProgressBar: true,
+        //     background: '#4f1964 ',
+        //     color: 'black',
+        //     didOpen: (toast) => {
+        //         toast.onmouseenter = Swal.stopTimer;
+        //         toast.onmouseleave = Swal.resumeTimer;
+        //     }
+        // });
+        <div class="alert">
+    <span class="alert-close">&times;</span>
+    This is an alert box with purple, black, and white colors.
+</div>
+        if (
+
+            emailVar == '' &&
+            senhavar == ''
+        ) {
+            alert({
+                title: 'Erro!',
+                text: 'Insira email e senha para fazer o login',
+                icon: 'error'
+            }
+            )
+        }
+        else if (emailVar != email) {
+            alert({
+                title: 'Erro!',
+                text: 'Este usuário não existe',
+                icon: 'error'
+            }
+            );
+        }
+        else if ((emailVar == email) && (senhavar != senha)) {
+         alert ({
+                title: 'Erro!',
+                text: 'Senha inválida',
+                icon: 'error',
+                toast: true,
+                background: '#4f1964 ',
+                color: 'white'
+            }
+            );
+            erro--
+
+            if (erro <= 0) {
+                alert({
+                    title: "Tentativas excedidas!",
+                    text: "Reinicie a página para tentar novamente",
+                    icon: 'error',
+                    toast: true,
+                    background: '#4f1964 ',
+                    color: 'white',
+                })
+
+                tentativas = 'false'
+            }
+        }
+
+        else if (tentativas == 'true' && ((emailVar == email) && (senhavar == senha))) {
+            alert({
+                title: "Sucesso!",
+                text: "Login Realizado!",
+                icon: 'success',
+                toast: true,
+                showConfirmButton: false,
+                background: '#4f1964 ',
+                color: 'white'
+            })
+            setTimeout(() => {
+                window.location.replace('../pages/Dashboard.html')
+            }, 3000);
+            erro = 4;
+        }
+
+        else if (tentativas == 'false') {
+            alert({
+                title: "Tentativas excedidas!",
+                text: "Reinicie a página para tentar novamente",
+                icon: 'error',
+                toast: true,
+                background: '#4f1964 ',
+                color: 'white',
+            })
+        }
+    }
+
+</script>

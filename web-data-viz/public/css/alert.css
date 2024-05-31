@@ -1,0 +1,23 @@
+.alert {
+    padding: 20px;
+    background-color: #4B0082; /* Purple */
+    color: #FFFFFF; /* White */
+    border: 1px solid #000000; /* Black */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.alert-close {
+    margin-left: 15px;
+    color: #FFFFFF; /* White */
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.alert-close:hover {
+    color: #000000; /* Black */
+}
