@@ -91,8 +91,8 @@
 .card .content_card textarea {
     width: 70%;
     height: 100px; 
-    background-color: #5d0082;
-    border: 4px solid #4f1964;
+    background-color: #4f1964;
+    border: 4px solid #fff;
     border-radius: 20px; 
     color: white;
     padding: 10px;
@@ -102,8 +102,8 @@
 }
 
 .card .content_card textarea:focus {
-    background-color: #402019;
-    border-color: #736053;
+    background-color: #5d0082;
+    border-color: #000;
     transition: 100ms linear;
 }
 
