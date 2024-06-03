@@ -7,7 +7,7 @@ body
 {
     display: flex;
     font-family: sofia-normal;
-    background-color: #402019;
+    background-color: #4f1964;
     flex-direction: column;
 }
 canvas
@@ -22,7 +22,7 @@ section
     display: flex;
     height: 100vh;
     width: 100%;
-    background-color: #402019;
+    background-color: #4f1964;
     align-self: center;
     
     align-items: center;
@@ -32,7 +32,7 @@ section
 .dashboard
 {
     margin-top: 5%;
-    background-color: #F1E3D6;
+    background-color: #5d0082;
     height: 80vh;
     width: 75%;
     border-radius: 25px;
@@ -79,7 +79,7 @@ section
     height: 100%;
     display: flex;
     align-self: center;
-    background-color: #D9C9BA;
+    background-color: #2f033e;
     margin: 0 20px;
     border-radius: 20px;
     justify-content: start;

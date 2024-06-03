@@ -39,7 +39,7 @@
                 <div class="content_card">
                     <h1>Faça o login</h1>
                     <p>Insira as username e senha para prosseguir</p>
-                    <input type="text" id="input_email" placeholder="username">    
+                    <input type="text" id="input_email" placeholder="email">
                     <br>
                     <input type="password" id="input_senha" placeholder="Senha">
                     <br>
@@ -57,104 +57,67 @@
 
 <script>
 
-    var erro = 4;
-    var tentativas = 'true'
-
     function logar() {
-        var email = ''
-        var senha = ''
         var emailVar = input_email.value;
-        var senhavar = input_senha.value;
+        var senhaVar = input_senha.value;
 
-        // const Toast = Swal.mixin({
-        //     toast: true,
-        //     position: "top-end",
-        //     showConfirmButton: false,
-        //     timer: 3000,
-        //     timerProgressBar: true,
-        //     background: '#4f1964 ',
-        //     color: 'black',
-        //     didOpen: (toast) => {
-        //         toast.onmouseenter = Swal.stopTimer;
-        //         toast.onmouseleave = Swal.resumeTimer;
-        //     }
-        // });
-        <div class="alert">
-    <span class="alert-close">&times;</span>
-    This is an alert box with purple, black, and white colors.
-</div>
-        if (
-
-            emailVar == '' &&
-            senhavar == ''
-        ) {
-            alert({
-                title: 'Erro!',
-                text: 'Insira email e senha para fazer o login',
-                icon: 'error'
-            }
-            )
+        if (emailVar == "" || senhaVar == "") {
+            alert("Erro Preencha os campos")
+            return false;
         }
-        else if (emailVar != email) {
-            alert({
-                title: 'Erro!',
-                text: 'Este usuário não existe',
-                icon: 'error'
-            }
-            );
-        }
-        else if ((emailVar == email) && (senhavar != senha)) {
-         alert ({
-                title: 'Erro!',
-                text: 'Senha inválida',
-                icon: 'error',
-                toast: true,
-                background: '#4f1964 ',
-                color: 'white'
-            }
-            );
-            erro--
+        else {
+            
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
 
-            if (erro <= 0) {
-                alert({
-                    title: "Tentativas excedidas!",
-                    text: "Reinicie a página para tentar novamente",
-                    icon: 'error',
-                    toast: true,
-                    background: '#4f1964 ',
-                    color: 'white',
-                })
-
-                tentativas = 'false'
-            }
-        }
-
-        else if (tentativas == 'true' && ((emailVar == email) && (senhavar == senha))) {
-            alert({
-                title: "Sucesso!",
-                text: "Login Realizado!",
-                icon: 'success',
-                toast: true,
-                showConfirmButton: false,
-                background: '#4f1964 ',
-                color: 'white'
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
             })
-            setTimeout(() => {
-                window.location.replace('../pages/Dashboard.html')
-            }, 3000);
-            erro = 4;
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "../dashboard/Dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+          
         }
 
-        else if (tentativas == 'false') {
-            alert({
-                title: "Tentativas excedidas!",
-                text: "Reinicie a página para tentar novamente",
-                icon: 'error',
-                toast: true,
-                background: '#4f1964 ',
-                color: 'white',
-            })
-        }
     }
+
+   
 
 </script>

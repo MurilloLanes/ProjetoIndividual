@@ -20,5 +20,5 @@ idvencedor int,
 fkplayer int,
 fkcampeonato int,
 primary key (idvencedor, fkplayer, fkcampeonato),
-usernameVenc varchar(45)
+Status varchar(45)
 );
