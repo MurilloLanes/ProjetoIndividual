@@ -13,9 +13,9 @@ body
 canvas
 {
     -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
 }
 section
 {
@@ -84,6 +84,7 @@ section
     border-radius: 20px;
     justify-content: start;
 
+
 }
 .dashboard .card h1
 {
@@ -136,24 +137,7 @@ section
     margin: 0 25px;
 }
 
-#umidade_card
-{
-    width: 15%;
-    margin: 20px 0 0 20px;
-}
-
-#temperatura_card
-{
-    width: 15%;
-    margin: 20px 0 0 20px;
-}
-
 .graficos{
     height: 20vh;
     width: 10vh;
-}
-
-.swal2-icon.swal2-warning{
-    color: #cc1010;
-     border-color: #cc1010;
 }

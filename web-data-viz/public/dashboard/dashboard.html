@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -20,15 +20,15 @@
             <nav class="navbar">
                 <div class="header_center">
                     <ul>
-    
+
                         <li><a href="../index.html">Página Inicial</a></li>
                     </ul>
                 </div>
                 <div class="header_right">
                     <ul>
                         <img src="../assets/headerLinha.png" alt="">
-                        
-                      
+
+
                     </ul>
             </nav>
         </div>
@@ -40,11 +40,11 @@
             <div class="dado">
                 <div class="card">
                     <div id="Vitoriascard">
-                        <h1>Vitorias</h1>
+                        <h2>Vitorias</h2>
                     </div>
                     <div class="card_content">
                         <div class="dado_card">
-                            
+
                             <div id="Vitorias"></div>
                             <div class="grafico" id="graphic1">
                                 <div class="content_grafico">
@@ -55,36 +55,15 @@
                     </div>
 
                 </div>
-
                 <div class="card">
-                    
-                    
+                    <div class="content">
+                        <canvas id="grafico_Vitorias"></canvas>
+                    </div>
+                </div>
 
-                </div>
-            </div>
-            <div class="grafico" id="graphic1">
 
-                <div class="content_grafico">
-                    <canvas id="grafico_Vitorias"></canvas>
-                </div>
-                <div class="content_grafico">
-                    <canvas id="grafico_umidade1"></canvas>
-                </div>
             </div>
-            <div class="grafico" id="graphic2" style="display: none;">
-                <div class="content_grafico">
-                    <canvas id="grafico_Vitorias"></canvas>
-                </div>
-                <div class="content_grafico">
-                </div>
-            </div>
-            <div class="grafico" id="graphic3" style="display: none;">
-                <div class="content_grafico">
-                    <canvas id="grafico_Vitorias"></canvas>
-                </div>
-                <div class="content_grafico">
-                </div>
-            </div>
+        </div>
     </section>
 
     <footer>
@@ -92,11 +71,12 @@
             <div class='rectangle39'>
             </div>
             <div class='rectangle38'>
-                
+
                 <div id='contate-nos' class='contate-nos'>
                     <img id='viewcoffee' class='EsportsGaming' src='../assets/Texto do seu parágrafo.gif'>
                     Contato
-                    <a href="../contate-nos.html" target="_blank" rel="noopener noreferrer"><img id='outlook' class='outlook' src="../assets/outlook.png"></a>
+                    <a href="../contate-nos.html" target="_blank" rel="noopener noreferrer"><img id='outlook'
+                            class='outlook' src="../assets/outlook.png"></a>
                 </div>
             </div>
 
@@ -110,97 +90,39 @@
 </body>
 
 </html>
-<div class="card">
-    <div class="content">
-        <canvas id="grafico_Vitorias"></canvas>
-    </div>
-</div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
 
 
 <script>
-    // Get the canvas element
+
     const ctxVitorias = document.getElementById('grafico_Vitorias').getContext('2d');
-
-    // Create a new chart instance
-    let chartVitorias = new Chart(ctxVitorias, {
-        type: 'bar',
-        data: {
-            labels: ["Vitória 1", "Vitória 2", "Vitória 3", "Vitória 4", "Vitória 5"],
-            datasets: [{
-                label: 'Vitórias',
-                data: [10, 20, 30, 40, 50],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-
-    const contextoLm35Vitorias = document.getElementById('grafico_Vitorias').getContext('2d');
     const contextografico_Vitorias2 = document.getElementById('grafico_Vitorias');
     const contextografico_Vitorias3 = document.getElementById('grafico_Vitorias');
 
-    var Vitorias = new Chart(
-        contextoVitorias1,
-        {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    label: 'Vitorias',
-                    type: 'line',
-                    borderColor: ['#08241c'],
-                    backgroundColor: ['#08241c']
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Vitoria'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
-            }
-        }
-    );
-
+    const config = {
+  type: 'doughnut',
+  data: data,
+};
+const data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+       
 </script>
