@@ -36,19 +36,20 @@
     <section>
         <div class="dashboard">
             <div class="armazem">
+                <button class="btn-dash" onclick="Perder()">Derrota!</button><br>
+                <button class="btn-dash" onclick="Ganhar()">Vitoria!</button><br>
             </div>
             <div class="dado">
                 <div class="card">
                     <div id="Vitoriascard">
-                        <h2>Vitorias</h2>
+                        <h2>Historico de Partidas</h2>
                     </div>
                     <div class="card_content">
                         <div class="dado_card">
-
                             <div id="Vitorias"></div>
                             <div class="grafico" id="graphic1">
-                                <div class="content_grafico">
-                                    <canvas id="grafico_Vitorias"></canvas>
+                                <div class="content">
+                                    <canvas id="grafico_obter"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +58,8 @@
                 </div>
                 <div class="card">
                     <div class="content">
-                        <canvas id="grafico_Vitorias"></canvas>
+
+                       
                     </div>
                 </div>
 
@@ -99,30 +101,109 @@
 
 <script>
 
-    const ctxVitorias = document.getElementById('grafico_Vitorias').getContext('2d');
-    const contextografico_Vitorias2 = document.getElementById('grafico_Vitorias');
-    const contextografico_Vitorias3 = document.getElementById('grafico_Vitorias');
+    function Ganhar() {
+        var ganhar = "Vitoria"
+        fetch('/medidas/ganhar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ganharServer: ganhar,
+                idusuarioServer: sessionStorage.ID_USUARIO
 
-    const config = {
-  type: 'doughnut',
-  data: data,
-};
-const data = {
-  labels: [
-    'Red',
-    'Blue',
-    'Yellow'
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
-    ],
-    hoverOffset: 4
-  }]
-};
-       
+            })
+        }) .then(function (resposta) {
+                console.log(resposta)
+
+                if (resposta.ok) {
+                    obterdados()
+                } else {
+                    alert('Erro')
+
+                }
+
+            })
+
+    }
+    function Perder() {
+        var perder = "Derrota"
+        fetch('/medidas/perder', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                perderServer: perder,
+                idusuarioServer: sessionStorage.ID_USUARIO
+
+            })
+        })
+
+            .then(function (resposta) {
+                console.log(resposta)
+
+                if (resposta.ok) {
+                  obterdados()
+                } else {
+                    alert('Erro')
+
+                }
+
+            })
+
+    }
+    function obterdados() {
+        fetch('/medidas/obterdados', { cache: "no-store" })
+            .then(function (response) {
+                console.log('estou aqui')
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados Recebidos: ${JSON.stringify(resposta)}`)
+                        plotarGrafico(resposta)
+                    })
+                } else {
+                    console.log('Erro ao obter dados')
+                }
+            })
+
+    }
+
+    function plotarGrafico(resposta) {
+        let labels = ['Vitoria', 'Derrota']
+
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Titulo',
+                data: [10, 0],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]  
+        }
+
+        var registro = resposta;
+        dados.datasets[0].data[0] = registro.Vitoria
+        dados.datasets[0].data[1] = registro.Derrota
+
+
+        const config = {
+            type: 'doughnut',
+            data: dados,
+        };
+
+        let myChart = new Chart(
+            document.getElementById('grafico_obter'),
+            config
+        )
+    }
+
 </script>

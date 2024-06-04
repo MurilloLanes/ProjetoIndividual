@@ -45,11 +45,13 @@ section
 
 .dashboard .armazem
 {
+    width: 50%;
     height: 20%;
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    align-self: flex-start;
-    margin-left: 25px;
+
+    padding-left: 20px;
    
 }
 
@@ -68,21 +70,24 @@ section
 .dashboard .dado 
 {
     width: 100%;
-    height: 25%;
+    height: 60%;
     display: flex;
     flex-direction: row;
 }
 
 .dashboard .card
 {
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    min-height: 30vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     align-self: center;
     background-color: #5d0082;
     margin: 0 20px;
     border-radius: 20px;
-    justify-content: start;
+    padding-bottom: 30px;
 
 
 }
@@ -140,4 +145,14 @@ section
 .graficos{
     height: 20vh;
     width: 10vh;
+}
+
+.btn-dash{
+    width: 200px;
+    height: 30px;
+
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #5d0082;
 }
