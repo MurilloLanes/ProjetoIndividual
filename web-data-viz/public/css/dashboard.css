@@ -22,7 +22,7 @@ section
     display: flex;
     height: 100vh;
     width: 100%;
-    background-color: #4f1964;
+    background-color: #5d0082;
     align-self: center;
     
     align-items: center;
@@ -32,7 +32,7 @@ section
 .dashboard
 {
     margin-top: 5%;
-    background-color: #5d0082;
+    background-color: #2f033e;
     height: 80vh;
     width: 75%;
     border-radius: 25px;
@@ -79,7 +79,7 @@ section
     height: 100%;
     display: flex;
     align-self: center;
-    background-color: #2f033e;
+    background-color: #5d0082;
     margin: 0 20px;
     border-radius: 20px;
     justify-content: start;

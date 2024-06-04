@@ -63,6 +63,7 @@
                 </div>
             </div>
             <div class="grafico" id="graphic1">
+
                 <div class="content_grafico">
                     <canvas id="grafico_Vitorias"></canvas>
                 </div>
@@ -109,26 +110,27 @@
 </body>
 
 </html>
+<div class="card">
+    <div class="content">
+        <canvas id="grafico_Vitorias"></canvas>
+    </div>
+</div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
 
 
 <script>
-
-    const contextoLm35Vitorias = document.getElementById('grafico_Vitorias').getContext('2d');
-    const contextografico_Vitorias2 = document.getElementById('grafico_Vitorias');
-    const contextografico_Vitorias3 = document.getElementById('grafico_Vitorias');
-
-
     // Get the canvas element
     const ctxVitorias = document.getElementById('grafico_Vitorias').getContext('2d');
 
     // Create a new chart instance
-    var chartVitorias = new Chart(ctxVitorias, {
-        type: 'doughnut',
+    let chartVitorias = new Chart(ctxVitorias, {
+        type: 'bar',
         data: {
-            labels: ['Vitória 1', 'Vitória 2', 'Vitória 3', 'Vitória 4', 'Vitória 5'],
+            labels: ["Vitória 1", "Vitória 2", "Vitória 3", "Vitória 4", "Vitória 5"],
             datasets: [{
                 label: 'Vitórias',
                 data: [10, 20, 30, 40, 50],
@@ -146,7 +148,7 @@
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)'
                 ],
-                borderWidth: 3
+                borderWidth: 1
             }]
         },
         options: {
@@ -159,6 +161,10 @@
             }
         }
     });
+
+    const contextoLm35Vitorias = document.getElementById('grafico_Vitorias').getContext('2d');
+    const contextografico_Vitorias2 = document.getElementById('grafico_Vitorias');
+    const contextografico_Vitorias3 = document.getElementById('grafico_Vitorias');
 
     var Vitorias = new Chart(
         contextoVitorias1,
