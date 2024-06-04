@@ -46,6 +46,11 @@
                         <div class="dado_card">
                             
                             <div id="Vitorias"></div>
+                            <div class="grafico" id="graphic1">
+                                <div class="content_grafico">
+                                    <canvas id="grafico_Vitorias"></canvas>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -117,6 +122,46 @@
     const contextoLm35Vitorias = document.getElementById('grafico_Vitorias').getContext('2d');
     const contextografico_Vitorias2 = document.getElementById('grafico_Vitorias');
     const contextografico_Vitorias3 = document.getElementById('grafico_Vitorias');
+
+
+    // Get the canvas element
+    const ctxVitorias = document.getElementById('grafico_Vitorias').getContext('2d');
+
+    // Create a new chart instance
+    var chartVitorias = new Chart(ctxVitorias, {
+        type: 'bar',
+        data: {
+            labels: ['Vitória 1', 'Vitória 2', 'Vitória 3', 'Vitória 4', 'Vitória 5'],
+            datasets: [{
+                label: 'Vitórias',
+                data: [10, 20, 30, 40, 50],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 
     var Vitorias = new Chart(
         contextoVitorias1,
