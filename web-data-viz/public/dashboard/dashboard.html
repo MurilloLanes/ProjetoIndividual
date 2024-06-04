@@ -63,7 +63,6 @@
                 </div>
             </div>
             <div class="grafico" id="graphic1">
-
                 <div class="content_grafico">
                     <canvas id="grafico_Vitorias"></canvas>
                 </div>
@@ -76,7 +75,6 @@
                     <canvas id="grafico_Vitorias"></canvas>
                 </div>
                 <div class="content_grafico">
-                    <canvas id="grafico_umidade2"></canvas>
                 </div>
             </div>
             <div class="grafico" id="graphic3" style="display: none;">
@@ -84,7 +82,6 @@
                     <canvas id="grafico_Vitorias"></canvas>
                 </div>
                 <div class="content_grafico">
-                    <canvas id="grafico_umidade3"></canvas>
                 </div>
             </div>
     </section>
@@ -129,7 +126,7 @@
 
     // Create a new chart instance
     var chartVitorias = new Chart(ctxVitorias, {
-        type: 'bar',
+        type: 'doughnut',
         data: {
             labels: ['Vitória 1', 'Vitória 2', 'Vitória 3', 'Vitória 4', 'Vitória 5'],
             datasets: [{
@@ -149,7 +146,7 @@
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 3
             }]
         },
         options: {
